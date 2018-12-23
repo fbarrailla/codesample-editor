@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import App from './components/App';
 import * as serviceWorker from './serviceWorker';
+import { registerLanguage } from 'react-syntax-highlighter/dist/prism-light';
+import jsx from 'react-syntax-highlighter/dist/languages/prism/jsx';
+
+///registerLanguage('js', js);
+registerLanguage('jsx', jsx);
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
