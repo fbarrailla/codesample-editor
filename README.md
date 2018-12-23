@@ -6,6 +6,10 @@
 
 <img src="./demo.gif" width="900" />
 
+## Try it!
+
+[https://fbarrailla.github.io/codesample-editor/](https://fbarrailla.github.io/codesample-editor/)
+
 ## Credits
 
 __Made with love thanks to__
