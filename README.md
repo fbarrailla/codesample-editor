@@ -20,5 +20,6 @@ __Made with love thanks to__
 - [Styled components](https://www.styled-components.com/)
 - [html2canvas](https://html2canvas.hertzen.com/)
 - [Canvas2Image](https://github.com/hongru/canvas2image)
+- [React Color](https://github.com/casesandberg/react-color/)
 - [React-Select](https://github.com/JedWatson/react-select)
 - [...](./package.json)
