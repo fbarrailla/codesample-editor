@@ -5,6 +5,8 @@ import { ChromePicker } from 'react-color';
 import { useStore } from '../state/store';
 import useFileInput from '../hooks/useFileInput';
 import { setBgImage } from '../state/db';
+import BgImagePicker from './BgImagePicker';
+import Button from './BgSettingsBtn';
 
 const Wrapper = styled.div`
   display: flex;
@@ -14,20 +16,6 @@ const Wrapper = styled.div`
   right: 0;
   justify-content: flex-end;
   margin: 10px;
-`;
-
-const Button = styled.button`
-  border: 0;
-  padding: 5px 10px;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  font-family: inherit;
-  border-radius: 3px;
-  outline: none;
-
-  + button {
-    margin-left: 10px;
-  }
 `;
 
 const ColorPickerWrapper = styled.div`
@@ -40,10 +28,14 @@ const ColorPickerWrapper = styled.div`
   top: 20px;
 `;
 
+const ImagePickerWrapper = styled.div``;
+
 const CustomBgSettings = () => {
   const colorPickerWrapperRef = useRef();
+  const imagePickerWrapperRef = useRef();
   const { select, dispatch } = useStore();
   const [isColorPickerVisible, setColorPickerVisible] = useState(false);
+  const [isImagePickerVisible, setImagePickerVisible] = useState(false);
 
   const handleFileUpload = fileContent => {
     const id = +new Date();
@@ -58,12 +50,26 @@ const CustomBgSettings = () => {
     setColorPickerVisible(false);
   });
 
+  useOnClickOutside(imagePickerWrapperRef, () => {
+    setImagePickerVisible(false);
+  });
+
   if (!select.isCustomBackground()) {
     return null;
   }
 
   const customBackground = select.getCustomBackground();
 
+  if (isImagePickerVisible) {
+    return (
+      <ImagePickerWrapper ref={imagePickerWrapperRef}>
+        <BgImagePicker
+          uploadFile={uploadFile}
+          close={() => setImagePickerVisible(false)}
+        />
+      </ImagePickerWrapper>
+    );
+  }
   if (isColorPickerVisible) {
     return (
       <ColorPickerWrapper ref={colorPickerWrapperRef}>
@@ -77,7 +83,7 @@ const CustomBgSettings = () => {
   return (
     <Wrapper>
       <Button onClick={() => setColorPickerVisible(true)}>Color</Button>
-      <Button onClick={() => uploadFile()}>Image</Button>
+      <Button onClick={() => setImagePickerVisible(true)}>Image</Button>
     </Wrapper>
   );
 };

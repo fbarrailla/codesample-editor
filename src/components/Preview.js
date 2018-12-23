@@ -6,7 +6,7 @@ import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
 import Canvas2Image from '../libs/canvas2image';
 import Title from './Title';
 import Settings from './Settings';
-import BackgroundSettings from './BackgroundSettings';
+import BgSettings from './BgSettings';
 import PreviewWindow from './PreviewWindow';
 import { useStore } from '../state/store';
 import useBoundingRect from '../hooks/useBoundingRect';
@@ -75,7 +75,7 @@ const BackgroundImage = styled.div`
   z-index: 0;
 `;
 
-const BackgroundSettingsWrapper = styled.div`
+const BgSettingsWrapper = styled.div`
   z-index: 2;
 `;
 
@@ -135,9 +135,9 @@ const Preview = () => {
             : select.getBackgroundColor(),
         }}
       >
-        <BackgroundSettingsWrapper className="bg-settings">
-          <BackgroundSettings />
-        </BackgroundSettingsWrapper>
+        <BgSettingsWrapper className="bg-settings">
+          <BgSettings />
+        </BgSettingsWrapper>
         <PreviewWindow>
           <SyntaxHighlighter
             language={state.language}

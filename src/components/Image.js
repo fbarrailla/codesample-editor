@@ -6,11 +6,14 @@ const Image = ({ data, width, height }) => {
   const [rect, setRect] = useState({ width, height });
   const [image, setImage] = useState(null);
 
-  useEffect(() => {
-    const img = document.createElement('img');
-    img.src = data;
-    img.onload = setImage(img);
-  }, []);
+  useEffect(
+    () => {
+      const img = document.createElement('img');
+      img.src = data;
+      img.onload = setImage(img);
+    },
+    [data]
+  );
 
   useEffect(
     () => {
@@ -19,7 +22,7 @@ const Image = ({ data, width, height }) => {
       ctx.clearRect(0, 0, rect.width, rect.height);
       setRect({ width, height });
     },
-    [width, height]
+    [width, height, data]
   );
 
   useEffect(
