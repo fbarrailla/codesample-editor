@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useStore } from '../state/store';
 
-const LocalStorage = () => {
+export default () => {
   const { state } = useStore();
   useEffect(
     () => {
@@ -9,7 +9,4 @@ const LocalStorage = () => {
     },
     [state]
   );
-  return null;
 };
-
-export default LocalStorage;

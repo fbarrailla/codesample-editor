@@ -1,10 +1,10 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
-import { StoreProvider } from '../state/store';
+
 import Editor from './Editor';
 import Preview from './Preview';
-import LocalStorage from './LocalStorage';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 const GlobalStyle = createGlobalStyle`
   ${reset};
@@ -19,17 +19,17 @@ const Wrapper = styled.div`
   flex-direction: row;
 `;
 
-const App = () => (
-  <>
-    <GlobalStyle />
-    <StoreProvider>
-      <LocalStorage />
+const App = () => {
+  useLocalStorage();
+  return (
+    <>
+      <GlobalStyle />
       <Wrapper>
         <Editor />
         <Preview />
       </Wrapper>
-    </StoreProvider>
-  </>
-);
+    </>
+  );
+};
 
 export default App;
