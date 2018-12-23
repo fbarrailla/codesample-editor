@@ -29,7 +29,7 @@ const Image = ({ data, width, height }) => {
       }
       requestAnimationFrame(draw);
     },
-    [rect.with, rect.height, image]
+    [rect, image]
   );
 
   const draw = () => {
